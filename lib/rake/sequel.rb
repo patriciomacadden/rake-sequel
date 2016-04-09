@@ -6,6 +6,7 @@ require "sequel"
 
 require "rake/sequel/adapters"
 require "rake/sequel/adapters/postgres"
+require "rake/sequel/adapters/sqlite"
 require "rake/sequel/version"
 
 module Rake
