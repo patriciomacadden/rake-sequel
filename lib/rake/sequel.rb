@@ -30,8 +30,12 @@ module Rake
     end
 
     def db_connection
-      hash = YAML.load_file database_file
-      db = ::Sequel.connect hash[environment]
+      begin
+        hash = YAML.load_file database_file
+        db = ::Sequel.connect hash[environment]
+      rescue
+        db = ::Sequel.connect ENV.fetch("DATABASE_URL")
+      end
     end
 
     def define
